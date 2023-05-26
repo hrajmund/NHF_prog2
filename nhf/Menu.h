@@ -7,7 +7,7 @@
 #include "TemplateKontener.h"
 #include "string5.h"
 #include "memtrace.h"
-void menu(TemplateKontener<Vonat> vonatok, TemplateKontener<Jegy> jegyek, TemplateKontener<Menetrend> menetrendek, TemplateKontener<Kocsi> kocsik) {
+void menu(TemplateKontener<Vonat> vonatok, TemplateKontener<Jegy> jegyek, TemplateKontener<Menetrend> menetrendek, Kocsi* kocsik) {
 
 	std::cout << "Vonatjegy" << std::endl;
 	std::cout << "(1.) Jegy" << std::endl
@@ -22,7 +22,7 @@ void menu(TemplateKontener<Vonat> vonatok, TemplateKontener<Jegy> jegyek, Templa
 		switch (menupont)
 		{
 		case '1': {
-			ujJegy(jegyek, menetrendek);
+			ujJegy(jegyek);
 			std::cout << "(1.) Jegy" << std::endl
 				<< "(2.) Menetrendek, allomasok" << std::endl
 				<< "(3.) Vonat" << std::endl
@@ -32,16 +32,30 @@ void menu(TemplateKontener<Vonat> vonatok, TemplateKontener<Jegy> jegyek, Templa
 			break;
 		}
 		case '2':
-			std::cout << "(1.) Uj allomas" << std::endl
-				<< "(2.) Meglevo allomas modositasa" << std::endl
-				<< "(3.) Uj menetrend" << std::endl
-				<< "(4.) Menetrend modositasa" << std::endl;
+			std::cout << "(5.) Uj allomas" << std::endl
+				<< "(6.) Meglevo allomas modositasa" << std::endl
+				<< "(7.) Uj menetrend" << std::endl
+				<< "(8.) Menetrend modositasa" << std::endl;
+			std::cin >> menupont;
 			switch (menupont) {
-			case '1':
+			case '5':
 				std::cout << "Szia" << std::endl;
+				std::cin >> menupont;
 				break;
 			}
-			
+			break;
+		case '3':
+			std::cout << "(5.) Uj vonat" << std::endl
+				<< "(6.) Meglevo vonat modositasa" << std::endl;
+			std::cin >> menupont;
+			switch (menupont) {
+			case '5':
+				//ujVonat();
+				break;
+			case '6':
+				vonatModosit();
+				break;
+			}
 		default:
 			break;
 		}

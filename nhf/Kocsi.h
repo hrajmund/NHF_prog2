@@ -21,6 +21,8 @@ public:
 	void setKerekpar(bool vanKerekpar);
 
 	void listazas(std::ostream& os) const;
+	bool operator!=(std::nullptr_t) const;
+	Kocsi& operator=(std::nullptr_t);
 };
 
 

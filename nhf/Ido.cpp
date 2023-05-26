@@ -1,5 +1,8 @@
 #include <iostream>
 #include "Ido.h"
+#include "string5.h"
+#include "StringStream.h"
+#include "memtrace.h"
 
 void Ido::setEv(int y) { ev = y; }
 void Ido::setHonap(int m) { honap = m; }
@@ -84,4 +87,20 @@ Ido Ido::operator-(const Ido& t) const {
     }
 
     return temp;
+}
+
+String convertIdoToString(const Ido& ido) {
+    String result;
+
+    // Konvertálás az év, hónap, nap, óra és perc String formátummá
+    String evStr = Stoi(ido.getEv());
+    String honapStr = Stoi(ido.getHonap());
+    String napStr = Stoi(ido.getNap());
+    String oraStr = Stoi(ido.getOra());
+    String percStr = Stoi(ido.getPerc());
+
+    // String összefûzése az idõ komponensekbõl
+    result = evStr + "-" + honapStr + "-" + napStr + " " + oraStr + ":" + percStr;
+
+    return result;
 }

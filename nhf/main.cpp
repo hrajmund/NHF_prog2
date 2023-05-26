@@ -11,9 +11,10 @@
 int main()
 {
 	TemplateKontener<Vonat> vonatok = TemplateKontener<Vonat>();
+	readVonat(vonatok);
 	TemplateKontener<Jegy> jegyek = TemplateKontener<Jegy>();
 	TemplateKontener<Menetrend> menetrendek = TemplateKontener<Menetrend>();
-	TemplateKontener<Kocsi> kocsik = TemplateKontener<Kocsi>();
+	Kocsi* kocsik = new Kocsi();
 
 	menu(vonatok, jegyek, menetrendek, kocsik);
     

@@ -89,5 +89,8 @@
     <ClInclude Include="FileKezeles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="StringStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

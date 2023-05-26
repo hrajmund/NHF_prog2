@@ -87,6 +87,7 @@ public:
 
     bool operator!=(const char* rhs);
 
+    bool empty() const;
     
 };
 
@@ -109,6 +110,10 @@ std::istream& operator>>(std::istream& is, String& s0);
 /// @return új String, ami tartalmazza a karaktert és a sztringet egymás után
 inline String operator+(char ch, const String& str) { return String(ch) + str; }
 
+//void getLine(std::istream& is, String& str);
+bool getLine(std::istream& is, String& str, char delimiter);
+bool getLine(std::istream& is, String& str);
 
+int Stoi(const String& str);
 
 #endif

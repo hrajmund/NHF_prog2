@@ -37,7 +37,7 @@ void Jegy::setTrain(const Vonat& vonat) { train = vonat; }
 void Jegy::setIndulas(const Allomas& allomas) { indulas = allomas; }
 void Jegy::setErkezes(const Allomas& allomas) { erkezes = allomas; }
 
-void ujJegy(TemplateKontener<Jegy> jegyek, TemplateKontener<Menetrend> menetrendek) {
+void ujJegy(TemplateKontener<Jegy> jegyek) {
 	Jegy j;
 	String _utasNev = String();
 	std::cout << "Kerem az utas nevet! ";

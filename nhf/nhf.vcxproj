@@ -151,6 +151,7 @@
     <ClInclude Include="Menetrend.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="string5.h" />
+    <ClInclude Include="StringStream.h" />
     <ClInclude Include="TemplateKontener.h" />
     <ClInclude Include="Vonat.h" />
   </ItemGroup>

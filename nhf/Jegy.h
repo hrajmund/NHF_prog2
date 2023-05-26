@@ -49,6 +49,6 @@ public:
 	void kesesKezeles();
 };
 
-void ujJegy(TemplateKontener<Jegy> jegyek, TemplateKontener<Menetrend> menetrendek);
+void ujJegy(TemplateKontener<Jegy> jegyek);
 
 #endif // !JEGY_H

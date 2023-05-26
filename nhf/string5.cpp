@@ -130,6 +130,63 @@ std::istream& operator>>(std::istream& is, String& s0) {
     return is;
 }
 
+bool String::empty() const {
+    return len == 0;
+}
 
+/*void getLine(std::istream& is, String& str) {
+    str = ""; // Ürítjük a Stringet
 
+    char ch;
+    while (is.get(ch)) {
+        if (ch == '\n') {
+            break; // Sortörés esetén kilépünk a ciklusból
+        }
+        str = str + ch; // Hozzáadjuk a karaktert a Stringhez
+    }
+}
+
+void getLine(std::istream& is, String& str, char delimiter) {
+    str = ""; // Ürítjük a Stringet
+
+    char ch;
+    while (is.get(ch)) {
+        if (ch == delimiter) {
+            break; // Határoló jelzés esetén kilépünk a ciklusból
+        }
+        str = str + ch; // Hozzáadjuk a karaktert a Stringhez
+    }
+}*/
+bool getLine(std::istream& is, String& str, char delimiter) {
+    str = ""; // Ürítjük a Stringet
+
+    char ch;
+    while (is.get(ch)) {
+        if (ch == delimiter) {
+            return true; // Sikeres sorbeolvasás esetén true értékkel térünk vissza
+        }
+        str = str + ch; // Hozzáadjuk a karaktert a Stringhez
+    }
+
+    return !str.empty(); // Visszatérünk false értékkel, ha a String üres
+}
+
+bool getLine(std::istream& is, String& str) {
+    str = ""; // Ürítjük a Stringet
+
+    char ch;
+    while (is.get(ch)) {
+        if (ch == '\n') {
+            return true; // Sikeres sorbeolvasás esetén true értékkel térünk vissza
+        }
+        str = str + ch; // Hozzáadjuk a karaktert a Stringhez
+    }
+
+    return !str.empty(); // Visszatérünk false értékkel, ha a String üres
+}
+
+int Stoi(const String& str) {
+    std::string tempStr(str.c_str()); // Konvertálás std::string-re
+    return std::stoi(tempStr);
+}
 

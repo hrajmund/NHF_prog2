@@ -3,6 +3,9 @@
 #define IDO_H
 
 #include <iostream>
+#include "string5.h"
+#include "StringStream.h"
+#include "memtrace.h"
 
 class Ido {
 private:
@@ -23,13 +26,11 @@ public:
 
     void kiirOraPerc();
 
-    int getNapokAHonapban(int honap, int ev) const;
-
     void setEv(int y);
-    void setHonap(int m);
-    void setNap(int d);
     void setOra(int h);
     void setPerc(int min);
+    void setHonap(int m);
+    void setNap(int d);
 
     int getEv() const;
     int getHonap() const;
@@ -37,8 +38,12 @@ public:
     int getOra() const;
     int getPerc() const;
 
+    int getNapokAHonapban(int honap, int ev) const;
     Ido operator-(const Ido& t) const;
+
 };
+
+String convertIdoToString(const Ido& ido);
 
 #endif // !IDO_H
 
