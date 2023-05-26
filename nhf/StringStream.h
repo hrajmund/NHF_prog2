@@ -5,28 +5,66 @@
 #include "string5.h"
 #include "memtrace.h"
 
+//class StringStream {
+//    String data;
+//    size_t position;
+//public:
+//    StringStream(const String& str) : data(str), position(0) {}
+//
+//    /*bool operator>>(String& output) {
+//        output = "";
+//        while (position < data.size() && data[position] != ';' && data[position] != '\t' && data[position] != '\n') {
+//            output = output + data[position];
+//            ++position;
+//        }
+//        skipWhitespace();
+//        return true;
+//    }*/
+//    bool operator>>(String& output) {
+//        output = "";
+//        while (position < data.size() && data[position] != ';' && data[position] != '\t' && data[position] != '\n') {
+//            output = output + data[position];
+//            ++position;
+//        }
+//        skipWhitespace();
+//        return true;
+//    }
+//
+//    void skipWhitespace() {
+//        while (position < data.size() && (data[position] == ';' || data[position] == '\t' || data[position] == '\n')) {
+//            ++position;
+//        }
+//    }
+//
+//
+//};
+
 class StringStream {
     String data;
-    unsigned int position;
+    int currentPosition;
+
 public:
-    StringStream(const String& str) : data(str), position(0) {}
+    StringStream(const String& str) : data(str), currentPosition(0) {}
 
-    bool operator>>(String output) {
-        output = "";
-        while (position < data.size() && data[position] != ';' && data[position] != '\t' && data[position] != '\n') {
-            output = output + data[position];
-            ++position;
+    template <typename T>
+    StringStream& operator>>(T& value) {
+        // Skip whitespace characters
+        while (currentPosition < data.size() && std::isspace(data[currentPosition]))
+            currentPosition++;
+
+        // Read value
+        std::stringstream ss;
+        while (currentPosition < data.size() && !std::isspace(data[currentPosition])) {
+            ss << data[currentPosition];
+            currentPosition++;
         }
-        skipWhitespace();
-        return true;
+
+        ss >> value;
+        return *this;
     }
 
-    void skipWhitespace() {
-        while (position < data.size() && (data[position] == ';' || data[position] == '\t' || data[position] == '\n')) {
-            ++position;
-        }
+    bool eof() const {
+        return currentPosition >= data.size();
     }
-
-
 };
 #endif // !STRINGSTREAM_H

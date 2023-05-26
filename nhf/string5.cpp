@@ -42,6 +42,16 @@ String::String(const String& s1) {
     pData = new char[len+1];
     // Bemásoljuk a stringet, ami le van zárva 0-val így használható az strcpy is
     strcpy(pData, s1.pData);
+    
+}
+
+String::String(const std::string& s1) {
+    len = s1.length();
+    pData = new char[len + 1];
+    for (int i = 0; i < len; i++) {
+        pData[i] = s1[i];
+    }
+
 }
 
 // operator=
@@ -134,7 +144,20 @@ bool String::empty() const {
     return len == 0;
 }
 
-bool getLine(std::istream& is, String& str, char delimiter) {
+bool getLine(std::istream& is, String& str, char delimiter = '\n') {
+    //str = ""; // Ürítjük a Stringet
+
+    char ch;
+    while (is.get(ch)) {
+        if (ch == delimiter) {
+            return true; // Sikeres sorbeolvasás esetén true értékkel térünk vissza
+        }
+        str = str + ch; // Hozzáadjuk a karaktert a Stringhez
+    }
+
+    return !str.empty(); // Visszatérünk false értékkel, ha a String üres
+}
+/*bool getLine(std::istream& is, String& str, char delimiter) {
     str = ""; // Ürítjük a Stringet
 
     char ch;
@@ -148,7 +171,7 @@ bool getLine(std::istream& is, String& str, char delimiter) {
     return !str.empty(); // Visszatérünk false értékkel, ha a String üres
 }
 
-bool getLine(std::istream& is, String& str) {
+bool getLine(std::istream& is, String str) {
     str = ""; // Ürítjük a Stringet
 
     char ch;
@@ -161,9 +184,10 @@ bool getLine(std::istream& is, String& str) {
 
     return !str.empty(); // Visszatérünk false értékkel, ha a String üres
 }
-
+*/
 int Stoi(const String& str) {
     std::string tempStr(str.c_str()); // Konvertálás std::string-re
     return std::stoi(tempStr);
 }
+
 

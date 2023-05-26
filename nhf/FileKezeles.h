@@ -10,14 +10,7 @@
 #include "Vonat.h"
 #include "Allomas.h"
 #include "Menetrend.h"
-/*
-void writeJegyekToFile(const TemplateKontener<Jegy>& jegyek);
-*/
 
-void readVonat(TemplateKontener<Vonat>& vonatok);
-
-void readJegy(TemplateKontener<Jegy>& jegyek);
-
-void readKocsi(TemplateKontener<Kocsi>& kocsik);
+void readVonatok(TemplateKontener<Vonat> vonatok);
 
 #endif // !FILEKEZELES_H

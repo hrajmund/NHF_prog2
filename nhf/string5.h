@@ -44,6 +44,7 @@ public:
     /// Másoló konstruktor
     /// @param s1 - String, amiből létrehozzuk az új String-et
     String(const String& s1);
+    String(const std::string& s1);
 
     /// Destruktor
     virtual ~String() { delete[] pData; }
@@ -112,8 +113,8 @@ inline String operator+(char ch, const String& str) { return String(ch) + str; }
 
 //void getLine(std::istream& is, String& str);
 bool getLine(std::istream& is, String& str, char delimiter);
-bool getLine(std::istream& is, String& str);
 
 int Stoi(const String& str);
+
 
 #endif

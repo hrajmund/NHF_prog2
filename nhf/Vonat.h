@@ -11,20 +11,20 @@
 class Vonat {
 	String vonatNev;
 	String vonatTipus;
-	Kocsi* kocsik;
+	TemplateKontener<Kocsi> kocsik;
 
 public:
 	Vonat();
-	Vonat(const String& _vonatNev, const String& _vonatTipus, Kocsi* _kocsik);
+	Vonat(const String& _vonatNev, const String& _vonatTipus, TemplateKontener<Kocsi> _kocsik);
 
 	String getVonatNev() const;
 	String getVonatTipus() const;
-	Kocsi* getKocsik() const;
+	TemplateKontener<Kocsi> getKocsik() const;
 	int getKocsiSzam() const;
 
 	void setVonatNev(const String& nev);
 	void setVonatTipus(const String& tipus);
-	void setKocsik(Kocsi* kocsik);
+	void setKocsik(Kocsi k);
 
 	void kocsiAdd();
 	void kocsiAdd(const Kocsi& kocsi);

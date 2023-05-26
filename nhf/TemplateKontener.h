@@ -159,12 +159,12 @@ public:
         size = 0;
     }
 
-    T& operator[](int index) {
+    T operator[](int index) {
         if (index < 0 || index >= size) {
             throw std::out_of_range("Index out of range");
         }
 
-        Lista<T>* current = getHead();
+        Lista<T>* current = this->getHead();
         for (int i = 0; i < index; i++) {
             current = current->getNext();
         }

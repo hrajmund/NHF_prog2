@@ -10,127 +10,52 @@
 #include "Allomas.h"
 #include "Menetrend.h"
 
-/*
-void writeJegyekToFile(const TemplateKontener<Jegy>& jegyek) {
-    std::ofstream file("jegy.txt");
-    
-    if (file.is_open()) {
-        // Végigiterálás a listán és az adatok kiírása a fájlba
-        Lista<Jegy>* current = jegyek.getHead();
-        while (current) {
-            Jegy jegy = current->getData();
-
-            file << jegy.getUtasNev() << ";"
-                << jegy.getSzulIdo().getEv() << ";"
-                << jegy.getSzulIdo().getHonap() << ";"
-                << jegy.getSzulIdo().getNap() << ";"
-                << jegy.getKedvezEsEgyeb() << ";"
-                << jegy.getTrain().getVonatNev() << ";"
-                << jegy.getTrain().getVonatTipus() << ";" << std::endl;
-
-            file << std::endl; // Sorvégjel a jegyek közötti elválasztáshoz
-
-            current = current->getNext();
-        }
-
-        file.close();
-        std::cout << "A Jegyek adatai kiírva a jegy.txt fájlba." << std::endl;
-    }
-    else {
-        std::cout << "Hiba a fájl megnyitása során." << std::endl;
-    }
-}
-*/
-
-void readVonat(TemplateKontener<Vonat>& vonatok) {
-    std::ifstream file("vonatok.txt");
+void readVonatok(TemplateKontener<Vonat> vonatok) {
+	std::ifstream file("vonatNevek.txt");
     if (!file.is_open()) {
-        std::cout << "Hiba: Nem sikerult megnyitni a fajlt." << std::endl;
+        std::cout << "Nem sikerult megnyitni." << std::endl;
         return;
     }
-    int count = 0;
-    String line;
-    while (getLine(file, line)) {
-        StringStream ss(line);
-
-        String vonatNev, vonatTipus, kocsikStr;
-        ss >> vonatNev;
-        ss >> vonatTipus;
-        ss >> kocsikStr;
-
-        Vonat vonat(vonatNev, vonatTipus, nullptr);
-
-        StringStream kocsikStream(kocsikStr);
-        String kocsiSorszam;
-        while (kocsikStream >> kocsiSorszam) {
-            int sorszam = Stoi(kocsiSorszam);
-            Kocsi tmp = Kocsi(sorszam, 0, false);
-            vonat.kocsiAdd(tmp);
-        }
-
-        vonatok.vegeBeszur(vonat);
-    }
-    file.close();
-}
-
-void readJegy(TemplateKontener<Jegy>& jegyek) {
-    std::ifstream file("jegyek.txt");
-    if (!file.is_open()) {
-        std::cout << "Hiba: Nem sikerult megnyitni a fajlt." << std::endl;
-        return;
-    }
-
-    String line;
-    while (getLine(file, line)) {
-        StringStream ss(line);
-
-        String nev;
-        Ido ido;
-        String kedvez;
-        Vonat vonat;
-        Allomas indulas;
-        Allomas erkezes;
-
-        ss >> nev;
-        ss >> convertIdoToString(ido);
-        ss >> kedvez;
-        ss >> vonat.getVonatNev();
-        ss >> indulas.getAllomasNev();
-        ss >> erkezes.getAllomasNev();
-
-        Jegy jegy(nev, ido, kedvez, vonat, indulas, erkezes);
-        jegyek.vegeBeszur(jegy);
-    }
-
-    file.close();
-}
-
-void readKocsi(TemplateKontener<Kocsi>& kocsik) {
-    std::ifstream file("kocsik.txt");
-    if (!file.is_open()) {
-        std::cout << "Hiba: Nem sikerult megnyitni a fajlt." << std::endl;
-        return;
-    }
-
-    String line;
-    while (getLine(file, line)) {
-        StringStream ss(line);
-        if (!getLine(file, line, ';'))
-            break;
+    //while(std::getline(file, line))
+    std::string line;
+    //std::getline(file, line);
+    int sorSzamlalo;
+    file >> sorSzamlalo;
+    std::stringstream ss(line);
+    ss.ignore('\n');
+    for (int i = 0; i < sorSzamlalo; i++)
+    {
         
-        int sorszam = Stoi(line);
+        std::string vNev;
+        std::getline(ss, vNev);
 
-        if (!getLine(file, line, ';'))
-            break;
+        std::string vTipus;
+        std::getline(ss, vTipus);
+        TemplateKontener<Kocsi> kocsik = TemplateKontener<Kocsi>();
+        int* kocsiSzamok = new int[10];
+        std::string kocsi;
+        int j = 0;
 
-        int ferohely = Stoi(line);
+        for (int j = 0; j < 10; j++) {
+            ss >> kocsiSzamok[j];
+            ss.ignore(' ');
+            Kocsi tmp = Kocsi(kocsiSzamok[j], 0, false);
+            kocsik.elejeBeszur(tmp);
+        }
 
-        if (!getLine(file, line))
-            break;
-
-        bool kerekpar = (line == "true");
-
-        Kocsi k = Kocsi(sorszam, ferohely, kerekpar);
-        kocsik.vegeBeszur(k);
+        /*while (std::getline(ss, kocsi, '\n')) {
+            ss >> kocsiSzamok[j];
+            ss.ignore(' ');
+            Kocsi tmp = Kocsi(kocsiSzamok[j], 0, false);
+            kocsik.elejeBeszur(tmp);
+        }*/
+        delete[] kocsiSzamok;
+        String _vNev = vNev;
+        String _vTipus = vTipus;
+        Vonat v = Vonat(_vNev, _vTipus, kocsik);
+        vonatok.vegeBeszur(v);
     }
+
+    file.close();
+
 }

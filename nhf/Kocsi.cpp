@@ -26,5 +26,7 @@ void Kocsi::setSorSzam(int szam) { sorSzam = szam; }
 void Kocsi::setFerohely(int hely) { ferohely = hely; }
 void Kocsi::setKerekpar(bool vanKerekpar) { kerekpar = vanKerekpar; }
 
-void Kocsi::listazas(std::ostream& os) const {}
+void Kocsi::listazas(std::ostream& os) const {
+	os << this->getSorSzam();
+}
 
