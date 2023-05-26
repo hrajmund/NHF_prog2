@@ -17,7 +17,7 @@ public:
         prev = nullptr;
         next = nullptr;
     }
-    T getData() const {
+    T getData(){
         return data;
     }
     Lista* getPrev() const {

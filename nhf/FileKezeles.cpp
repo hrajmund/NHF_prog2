@@ -13,7 +13,7 @@
 /*
 void writeJegyekToFile(const TemplateKontener<Jegy>& jegyek) {
     std::ofstream file("jegy.txt");
-
+    
     if (file.is_open()) {
         // Végigiterálás a listán és az adatok kiírása a fájlba
         Lista<Jegy>* current = jegyek.getHead();
@@ -43,11 +43,12 @@ void writeJegyekToFile(const TemplateKontener<Jegy>& jegyek) {
 */
 
 void readVonat(TemplateKontener<Vonat>& vonatok) {
-    std::ifstream file("vonat.txt");
+    std::ifstream file("vonatok.txt");
     if (!file.is_open()) {
         std::cout << "Hiba: Nem sikerult megnyitni a fajlt." << std::endl;
         return;
     }
+    int count = 0;
     String line;
     while (getLine(file, line)) {
         StringStream ss(line);
@@ -69,7 +70,6 @@ void readVonat(TemplateKontener<Vonat>& vonatok) {
 
         vonatok.vegeBeszur(vonat);
     }
-
     file.close();
 }
 
@@ -103,4 +103,34 @@ void readJegy(TemplateKontener<Jegy>& jegyek) {
     }
 
     file.close();
+}
+
+void readKocsi(TemplateKontener<Kocsi>& kocsik) {
+    std::ifstream file("kocsik.txt");
+    if (!file.is_open()) {
+        std::cout << "Hiba: Nem sikerult megnyitni a fajlt." << std::endl;
+        return;
+    }
+
+    String line;
+    while (getLine(file, line)) {
+        StringStream ss(line);
+        if (!getLine(file, line, ';'))
+            break;
+        
+        int sorszam = Stoi(line);
+
+        if (!getLine(file, line, ';'))
+            break;
+
+        int ferohely = Stoi(line);
+
+        if (!getLine(file, line))
+            break;
+
+        bool kerekpar = (line == "true");
+
+        Kocsi k = Kocsi(sorszam, ferohely, kerekpar);
+        kocsik.vegeBeszur(k);
+    }
 }

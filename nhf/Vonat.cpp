@@ -77,7 +77,7 @@ void Vonat::kocsiAdd(const Kocsi& kocsi) {
     kocsik = ujKocsik;
 }
 
-void ujVonat(TemplateKontener<Vonat> vonatok, Kocsi* kocsik) {
+void ujVonat(TemplateKontener<Vonat> vonatok, TemplateKontener<Kocsi> kocsik) {
     Vonat v = Vonat();
 
     std::cout << "Add meg a vonat nevet!" << std::endl;
@@ -93,6 +93,7 @@ void ujVonat(TemplateKontener<Vonat> vonatok, Kocsi* kocsik) {
     std::cout << "Valaszd ki, melyik kocsikat szeretned hozzaadni!" << std::endl
         << "Ha mar nem szeretnel uj kocsit hozzaadni, nyomd meg a 'Q'-t " << std::endl;
     char valasztas;
+    std::cin >> valasztas;
     int i = 0;
     //for(int i = 0; i < kocsik)
 }

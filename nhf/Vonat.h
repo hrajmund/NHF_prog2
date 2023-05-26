@@ -30,7 +30,7 @@ public:
 	void kocsiAdd(const Kocsi& kocsi);
 };
 
-void ujVonat(TemplateKontener<Vonat> vonatok, Kocsi* kocsik);
+void ujVonat(TemplateKontener<Vonat> vonatok, TemplateKontener<Kocsi> kocsik);
 void vonatModosit();
 
 #endif

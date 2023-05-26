@@ -7,13 +7,13 @@
 
 class StringStream {
     String data;
-    size_t position;
+    unsigned int position;
 public:
     StringStream(const String& str) : data(str), position(0) {}
 
     bool operator>>(String output) {
         output = "";
-        while (position < data.size() && data[position] != ' ' && data[position] != '\t' && data[position] != '\n') {
+        while (position < data.size() && data[position] != ';' && data[position] != '\t' && data[position] != '\n') {
             output = output + data[position];
             ++position;
         }
@@ -22,9 +22,11 @@ public:
     }
 
     void skipWhitespace() {
-        while (position < data.size() && (data[position] == ' ' || data[position] == '\t' || data[position] == '\n')) {
+        while (position < data.size() && (data[position] == ';' || data[position] == '\t' || data[position] == '\n')) {
             ++position;
         }
     }
+
+
 };
 #endif // !STRINGSTREAM_H

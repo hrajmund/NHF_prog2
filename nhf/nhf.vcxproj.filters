@@ -48,6 +48,9 @@
     <ClCompile Include="Lista.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FileKezeles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vonat.h">

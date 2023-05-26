@@ -7,7 +7,7 @@
 #include "TemplateKontener.h"
 #include "string5.h"
 #include "memtrace.h"
-void menu(TemplateKontener<Vonat> vonatok, TemplateKontener<Jegy> jegyek, TemplateKontener<Menetrend> menetrendek, Kocsi* kocsik) {
+void menu(TemplateKontener<Vonat> vonatok, TemplateKontener<Jegy> jegyek, TemplateKontener<Menetrend> menetrendek, TemplateKontener<Kocsi> kocsik) {
 
 	std::cout << "Vonatjegy" << std::endl;
 	std::cout << "(1.) Jegy" << std::endl

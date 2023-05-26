@@ -134,29 +134,6 @@ bool String::empty() const {
     return len == 0;
 }
 
-/*void getLine(std::istream& is, String& str) {
-    str = ""; // Ürítjük a Stringet
-
-    char ch;
-    while (is.get(ch)) {
-        if (ch == '\n') {
-            break; // Sortörés esetén kilépünk a ciklusból
-        }
-        str = str + ch; // Hozzáadjuk a karaktert a Stringhez
-    }
-}
-
-void getLine(std::istream& is, String& str, char delimiter) {
-    str = ""; // Ürítjük a Stringet
-
-    char ch;
-    while (is.get(ch)) {
-        if (ch == delimiter) {
-            break; // Határoló jelzés esetén kilépünk a ciklusból
-        }
-        str = str + ch; // Hozzáadjuk a karaktert a Stringhez
-    }
-}*/
 bool getLine(std::istream& is, String& str, char delimiter) {
     str = ""; // Ürítjük a Stringet
 

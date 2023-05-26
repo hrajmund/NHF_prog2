@@ -164,12 +164,12 @@ public:
             throw std::out_of_range("Index out of range");
         }
 
-        Lista* current = head;
+        Lista<T>* current = getHead();
         for (int i = 0; i < index; i++) {
-            current = current->next;
+            current = current->getNext();
         }
 
-        return current->data;
+        return current->getData();
     }
 
     ~TemplateKontener() {
