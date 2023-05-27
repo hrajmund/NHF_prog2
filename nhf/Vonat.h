@@ -31,6 +31,7 @@ public:
 };
 
 void ujVonat(TemplateKontener<Vonat> vonatok, TemplateKontener<Kocsi> kocsik);
+Vonat& vonatKeres(String& vonatNev, TemplateKontener<Vonat> vonatok);
 void vonatModosit();
 
 #endif

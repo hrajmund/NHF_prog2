@@ -1,0 +1,2 @@
+Pelda Utas;2004;5;7;1001;ProbaJanos;Budapest;Gyor;1200;20;301
+Pelda Utas2;2004;5;7;1001;ProbaJanos;Budapest;Gyor;1200;20;302

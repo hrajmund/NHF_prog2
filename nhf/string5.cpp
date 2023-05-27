@@ -47,10 +47,11 @@ String::String(const String& s1) {
 
 String::String(const std::string& s1) {
     len = s1.length();
-    pData = new char[len + 1];
+    pData = new char[len];
     for (int i = 0; i < len; i++) {
         pData[i] = s1[i];
     }
+    pData[len] = '\0';
 
 }
 

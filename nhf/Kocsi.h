@@ -2,6 +2,7 @@
 #define KOCSI_H
 
 #include <iostream>
+#include "TemplateKontener.h"
 
 class Kocsi {
 	int sorSzam;
@@ -25,5 +26,6 @@ public:
 	Kocsi& operator=(std::nullptr_t);
 };
 
+Kocsi& kocsiKeres(int szam, TemplateKontener<Kocsi> kocsik);
 
 #endif // !KOCSI_H

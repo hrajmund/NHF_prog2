@@ -6,23 +6,27 @@
 #include "Ido.h"
 #include "string5.h"
 #include "Vonat.h"
+#include "TemplateKontener.h"
+#include "memtrace.h"
 
 class Allomas {
 	String allomasNev;
-	Vonat* vonatMegall;
-	Ido idok;
+	TemplateKontener<Vonat> vonatMegall;
+	TemplateKontener<Ido> idok;
 public:
 	Allomas();
-	Allomas(String _allomasNev, Vonat* _vonatMegall, Ido _idok);
+	Allomas(String _allomasNev, TemplateKontener<Vonat> _vonatMegall, TemplateKontener<Ido> _idok);
 	~Allomas();
 
 	String getAllomasNev() const;
 	String getAllomasNev();
-	Vonat* getVonatMegall() const;
-	Ido getIdok() const;
+	TemplateKontener<Vonat> getVonatMegall() const;
+	TemplateKontener<Ido> getIdok() const;
 
 	void setAllomasNev(const String& nev);
-	void setVonatMegall(Vonat* vonat);
-	void setIdok(const Ido& ido);
+	void setVonatMegall(TemplateKontener<Vonat> vonat);
+	void setIdok(const Ido& ido, Vonat v);
 };
+
+Allomas& allomasKeres(String allNev, TemplateKontener<Allomas> allomasok);
 #endif // !ALLOMAS_H

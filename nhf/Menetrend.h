@@ -14,11 +14,12 @@
 
 class Menetrend {
 private:
-	Allomas* allomasok;
+	TemplateKontener<Allomas> allomasok;
 	int size;
 public:
 	Menetrend();
-	Menetrend(Allomas* _allomasok);
+	Menetrend(TemplateKontener<Allomas> _allomasok);
+	Menetrend(TemplateKontener<Allomas> _allomasok, int _size);
 	~Menetrend();
 
 	int getSize() const;
@@ -27,7 +28,7 @@ public:
 	void listazas(std::ostream& os, const Menetrend& m) const;
 	void allomasAdd();
 	void allomasDel();
-	Allomas allomasKeres(String all);
+	//Allomas allomasKeres(String all);
 	
 };
 

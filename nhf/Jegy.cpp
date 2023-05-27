@@ -16,6 +16,18 @@ Jegy::Jegy(String _nev, Ido _szulIdo, String _kedvez, Vonat _train, Allomas _ind
 	indulas(_indulas),
 	erkezes(_erkezes) {}
 
+Jegy::Jegy(String _nev, Ido _szulIdo, String _kedvez, Vonat _train, Allomas _indulas, Allomas _erkezes, int _ar, int _teljesTav, String _ulohely) {
+	utasNev = _nev;
+	szulIdo = _szulIdo;
+	kedvezEsEgyeb = _kedvez;
+	train = _train;
+	indulas = _indulas;
+	erkezes = _erkezes;
+	ar = _ar;
+	teljesTav = _teljesTav;
+	uloHely = _ulohely;
+}
+
 Jegy::~Jegy() {
 
 }

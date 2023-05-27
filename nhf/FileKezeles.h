@@ -11,6 +11,11 @@
 #include "Allomas.h"
 #include "Menetrend.h"
 
-void readVonatok(TemplateKontener<Vonat> vonatok);
+bool str_bool(std::string const& s);
+TemplateKontener<Vonat> readVonatok(TemplateKontener<Vonat> vonatok, TemplateKontener<Kocsi> kocsik);
+TemplateKontener<Kocsi> readKocsik(TemplateKontener<Kocsi> kocsik);
+TemplateKontener<Allomas> readAllomasok(TemplateKontener<Allomas> allomasok, TemplateKontener<Vonat> vonatok);
+TemplateKontener<Menetrend> readMenetrendek(TemplateKontener<Menetrend> menetrendek, TemplateKontener<Allomas> allomasok);
+TemplateKontener<Jegy> readJegy(TemplateKontener<Kocsi> kocsik, TemplateKontener<Vonat> vonatok, TemplateKontener<Menetrend> menetrendek, TemplateKontener<Allomas> allomasok, TemplateKontener<Jegy> jegyek);
 
 #endif // !FILEKEZELES_H

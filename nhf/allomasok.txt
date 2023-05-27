@@ -1,0 +1,4 @@
+Budapest;ProbaJanos;ProbaPeti
+10:35;10:40
+Gyor;ProbaJanos;ProbaPeti;Proba Space
+10:15;10:20;10:30

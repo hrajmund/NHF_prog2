@@ -1,5 +1,8 @@
 #include <iostream>
 #include "Kocsi.h"
+#include "TemplateKontener.h"
+#include "Lista.h"
+#include "memtrace.h"
 
 Kocsi::Kocsi() {
 	sorSzam = 0;
@@ -25,6 +28,20 @@ bool Kocsi::getKerekpar() const { return kerekpar; }
 void Kocsi::setSorSzam(int szam) { sorSzam = szam; }
 void Kocsi::setFerohely(int hely) { ferohely = hely; }
 void Kocsi::setKerekpar(bool vanKerekpar) { kerekpar = vanKerekpar; }
+
+Kocsi& kocsiKeres(int szam, TemplateKontener<Kocsi> kocsik) {
+	for (int i = 0; i < kocsik.getSize(); i++) {
+		Kocsi kocsi = kocsik[i];
+		if (kocsi.getSorSzam() == szam) {
+			return kocsi;
+		}
+	}
+	std::cout << "Nincs Találat!" << std::endl;
+	Kocsi nincsTalalat = Kocsi(0, 0, false);
+	// Ha nem található a megadott számú kocsi, alap objektumot adunk vissza
+	return nincsTalalat;
+
+}
 
 void Kocsi::listazas(std::ostream& os) const {
 	os << this->getSorSzam();

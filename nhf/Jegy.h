@@ -23,6 +23,7 @@ class Jegy {
 public:
 	Jegy() : ar(0), teljesTav(0) {}
 	Jegy(String _nev, Ido _szulIdo, String _kedvez, Vonat _train, Allomas _indulas, Allomas _erkezes);
+	Jegy(String _nev, Ido _szulIdo, String _kedvez, Vonat _train, Allomas _indulas, Allomas _erkezes, int _ar, int _teljesTav, String _ulohely);
 	~Jegy();
 
 	String getUtasNev() const;

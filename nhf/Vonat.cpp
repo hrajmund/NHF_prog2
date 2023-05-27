@@ -67,4 +67,17 @@ void ujVonat(TemplateKontener<Vonat> vonatok, TemplateKontener<Kocsi> kocsik) {
     int i = 0;
     //for(int i = 0; i < kocsik)
 }
+
+Vonat& vonatKeres(String& vonatNev, TemplateKontener<Vonat> vonatok) {
+    for (int i = 0; i < vonatok.getSize(); i++) {
+        Vonat vonat = vonatok[i];
+        if (vonat.getVonatNev() == vonatNev) {
+            return vonat;
+        }
+    }
+    std::cout << "Nincs Találat!" << std::endl;
+    TemplateKontener<Kocsi> kocsik = TemplateKontener<Kocsi>();
+    Vonat nincsTalalat = Vonat("", "", kocsik);
+    return nincsTalalat;
+}
 void vonatModosit() {}

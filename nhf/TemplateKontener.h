@@ -149,7 +149,7 @@ public:
     void clear() {
         Lista<T>* current = head;
 
-        while (current) {
+        while (current != nullptr) {
             Lista<T>* nextLista = current->getNext();
             delete current;
             current = nextLista;

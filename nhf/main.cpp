@@ -11,12 +11,18 @@
 int main()
 {
 	TemplateKontener<Vonat> vonatok = TemplateKontener<Vonat>();
-	readVonatok(vonatok);
+	TemplateKontener<Kocsi> kocsik = TemplateKontener<Kocsi>();
+	TemplateKontener<Menetrend> menetrendek = TemplateKontener<Menetrend>();
+	TemplateKontener<Allomas> allomasok = TemplateKontener<Allomas>();
+	kocsik = readKocsik(kocsik);
+	vonatok = readVonatok(vonatok, kocsik);
+	allomasok = readAllomasok(allomasok, vonatok);
+	menetrendek = readMenetrendek(menetrendek, allomasok);
 	std::cout << vonatok[0].getVonatNev() << std::endl;
 	/*
 	TemplateKontener<Jegy> jegyek = TemplateKontener<Jegy>();
-	TemplateKontener<Menetrend> menetrendek = TemplateKontener<Menetrend>();
-	TemplateKontener<Kocsi> kocsik = TemplateKontener<Kocsi>();
+
+	
 
 
     menu(vonatok, jegyek, menetrendek, kocsik);
